@@ -19,9 +19,10 @@ def movement(method,direction):
     screen.listen()
     screen.onkey(method, direction)
 
-def finish_game():
+""" def finish_game():
     game_is_on = False
-    scoreBoard.game_over()
+    scoreBoard.game_over() """
+
 movement(snake.up, "Up")
 movement(snake.left, "Left")
 movement(snake.down, "Down")
