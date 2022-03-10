@@ -1,4 +1,4 @@
-# SnakeGame
+# SnakeGame 🐍
 Snake game developed with python
 
 ## Starting 🚀
