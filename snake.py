@@ -23,15 +23,15 @@ class Snake:
     #Add a square to the body of the snake
     def add_segment(self, position):
         snake_segment = Turtle("square")
-        snake_segment.color("white")
+        snake_segment.color("black")
         snake_segment.penup()
         snake_segment.goto(position)
         self.snake_body.append(snake_segment)
 
-    #Extend the boy of the snake
+    #Extend the body of the snake
     def extend (self):
         self.add_segment(self.snake_body[-1].position())
-
+    #Method to move the snake
     def move(self):
         for i in range (len(self.snake_body)-1,0,-1):
                 x = self.snake_body[i - 1].xcor()

@@ -4,32 +4,34 @@ from snake import Snake
 from food import Food
 from scoreBoard import ScoreBoard
 import time
+
 #Creation of the board
 screen = Screen()
 screen.setup(width=600, height=600)
-screen.bgcolor("black")
+screen.bgcolor("#08533A")
 screen.title("Programate snake game")
 screen.tracer(0)
 #Creation of the Snake and the Food
 snake = Snake()
 food = Food()
 scoreBoard = ScoreBoard()
+#Snake animation
+game_is_on = True
 #Listen keys method
 def movement(method,direction):
     screen.listen()
     screen.onkey(method, direction)
-
-""" def finish_game():
-    game_is_on = False
-    scoreBoard.game_over() """
 
 movement(snake.up, "Up")
 movement(snake.left, "Left")
 movement(snake.down, "Down")
 movement(snake.right, "Right")
 
-#Snake animation
-game_is_on = True
+#Function to change the state of game and execute the game over
+def finish_game():
+    global game_is_on
+    game_is_on = False
+    scoreBoard.game_over()
 
 while game_is_on:
     screen.update()
@@ -44,15 +46,12 @@ while game_is_on:
 
     #Detect collition with the board
     if snake.head.xcor() > 280 or snake.head.ycor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() < -280:
-        game_is_on = False
-        scoreBoard.game_over()
+        finish_game()
 
 
     #Detect collition with the body of the snake
-    for i in snake.snake_body:
-        if i == snake.head:
-            pass
-        elif snake.head.distance(i)<10:
-            game_is_on = False
-            scoreBoard.game_over()
+    for i in snake.snake_body[1:len(snake.snake_body)]:
+        if snake.head.distance(i)<10:
+            finish_game()
+    
 screen.exitonclick()

@@ -7,15 +7,18 @@ class ScoreBoard(Turtle):
     def __init__ (self):
         
         super().__init__()
+        self.penup()
         self.goto((-295,260))
+        
         self.showPoints()
+        
 
     #Method to draw the points using turtle.write
     def showPoints (self):
-        self.color("green")
+        self.color("black")
         self.write(f"POINTS: {self.points}", False, align=self.ALIGN, font = self.FONT)
         self.hideturtle()
-
+    #Method to increment the points
     def increase_points(self):
         self.clear()
         self.points += 1
